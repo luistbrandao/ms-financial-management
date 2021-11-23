@@ -1,5 +1,6 @@
 package br.com.project.msfinancial.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -17,15 +18,27 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Usuario {
+public class User implements Serializable {
 
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7254480324756131123L;
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
-    private String numeroTelefone;
+    private String name;
+    private String cpf;
+//    private String phoneNumber;
+//    private String creditCard;
+//    private String birthday;
+//    private String email;
+//    private char sex;
     
     @OneToMany(cascade = CascadeType.ALL)
-    private List<Ativos> ativos;
+    private List<MonthSpendInfo> monthSpendInfos;
+    
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Stocks> stocks;
 
 }
