@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.project.msfinancial.model.Usuario;
 import br.com.project.msfinancial.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RestController
+@Slf4j
 public class UserResource {
 
 	@Autowired
@@ -24,10 +26,10 @@ public class UserResource {
 		
 		Usuario save = userRepository.save(user);
 		if(save != null) {
-			System.out.println("Elemento salvo: " +save.toString());
+			log.info("Elemento salvo: {}", save.toString());
 		}
 		else {
-			System.out.println("não funcionou");
+			log.info("Erro ao salvar");
 		}
 
 		return ResponseEntity.ok(user.toString());
