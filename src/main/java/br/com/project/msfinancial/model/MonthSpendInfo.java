@@ -35,6 +35,6 @@ public class MonthSpendInfo implements Serializable {/**
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
-	private Usuario user;
+	private UserInfo user;
 	
 }
