@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
+//@Entity
 public class MonthSpendInfo implements Serializable {/**
 	 * 
 	 */
@@ -35,6 +35,6 @@ public class MonthSpendInfo implements Serializable {/**
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
-	private User user;
+	private Usuario user;
 	
 }

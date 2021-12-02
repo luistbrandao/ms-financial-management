@@ -3,6 +3,7 @@ package br.com.project.msfinancial.model;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -40,28 +41,27 @@ public class Stocks implements Serializable {
     private Double estimateProfitGain; //estimativa de ganhos pelo preço alvo
     private ShareType shareType; //tipo de ativo
     
-    @ManyToOne
-    @JoinColumn(name = "usuario_id")
-    private User usuario;
+//    @ManyToOne
+//    private Usuario usuario;
 
-	public Stocks(Long id, String ticker, Integer quantity, Double costBasis, Double avaragePrice, Double profitLoss,
-			Double upgrading, Double percentageSharesStocks, Double quote, Double targetPrice, Double toTarget,
-			Double estimateProfitGain, ShareType shareType) {
-		super();
-		this.id = id;
-		this.ticker = ticker;
-		this.quantity = quantity;
-		this.costBasis = costBasis;
-		this.avaragePrice = avaragePrice;
-		this.profitLoss = profitLoss;
-		this.upgrading = upgrading;
-		this.percentageSharesStocks = percentageSharesStocks;
-		this.quote = quote;
-		this.targetPrice = targetPrice;
-		this.toTarget = toTarget;
-		this.estimateProfitGain = estimateProfitGain;
-		this.shareType = shareType;
-	}
+//	public Stocks(Long id, String ticker, Integer quantity, Double costBasis, Double avaragePrice, Double profitLoss,
+//			Double upgrading, Double percentageSharesStocks, Double quote, Double targetPrice, Double toTarget,
+//			Double estimateProfitGain, ShareType shareType) {
+//		super();
+//		this.id = id;
+//		this.ticker = ticker;
+//		this.quantity = quantity;
+//		this.costBasis = costBasis;
+//		this.avaragePrice = avaragePrice;
+//		this.profitLoss = profitLoss;
+//		this.upgrading = upgrading;
+//		this.percentageSharesStocks = percentageSharesStocks;
+//		this.quote = quote;
+//		this.targetPrice = targetPrice;
+//		this.toTarget = toTarget;
+//		this.estimateProfitGain = estimateProfitGain;
+//		this.shareType = shareType;
+//	}
 
 	
 

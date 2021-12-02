@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
@@ -18,7 +19,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User implements Serializable {
+public class Usuario implements Serializable {
 
     /**
 	 * 
@@ -35,10 +36,11 @@ public class User implements Serializable {
 //    private String email;
 //    private char sex;
     
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<MonthSpendInfo> monthSpendInfos;
+//    @OneToMany(cascade = CascadeType.ALL)
+//    private List<MonthSpendInfo> monthSpendInfos;
     
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private List<Stocks> stocks;
 
 }
