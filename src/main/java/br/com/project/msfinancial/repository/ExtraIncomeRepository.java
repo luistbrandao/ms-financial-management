@@ -3,10 +3,9 @@ package br.com.project.msfinancial.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import br.com.project.msfinancial.model.UserInfo;
+import br.com.project.msfinancial.model.ExtraIncome;
 
 @Repository
-public interface UserRepository extends JpaRepository<UserInfo, String>{
+public interface ExtraIncomeRepository extends JpaRepository<ExtraIncome, Long>{
 
-	public String findByCpf(String cpf);
 }

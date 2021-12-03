@@ -39,6 +39,7 @@ public class Stocks implements Serializable {
     private Double targetPrice; //preço alvo
     private Double toTarget; //quanto falta para o preço alvo
     private Double estimateProfitGain; //estimativa de ganhos pelo preço alvo
+//    FIXME analisar o sharetype ao salvar
     private ShareType shareType; //tipo de ativo
     
 //    @ManyToOne
