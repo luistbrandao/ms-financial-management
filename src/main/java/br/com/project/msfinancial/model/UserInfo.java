@@ -43,11 +43,11 @@ public class UserInfo implements Serializable {
 //    private List<MonthSpendInfo> monthSpendInfos;
     
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "userinfo_id", referencedColumnName = "cpf")
+    @JoinColumn(name = "user_cpf", referencedColumnName = "cpf")
     private List<Stocks> stocks;
     
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "userinfo_id", referencedColumnName = "cpf")
+    @JoinColumn(name = "user_cpf", referencedColumnName = "cpf")
     private List<MonthSpendInfo> monthSpendInfos;
 
 }
