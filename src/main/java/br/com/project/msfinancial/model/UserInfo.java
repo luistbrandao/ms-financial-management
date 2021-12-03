@@ -45,5 +45,9 @@ public class UserInfo implements Serializable {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "userinfo_id", referencedColumnName = "cpf")
     private List<Stocks> stocks;
+    
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "userinfo_id", referencedColumnName = "cpf")
+    private List<MonthSpendInfo> monthSpendInfos;
 
 }
