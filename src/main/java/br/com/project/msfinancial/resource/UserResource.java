@@ -1,6 +1,8 @@
 package br.com.project.msfinancial.resource;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +15,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import br.com.project.msfinancial.model.Response;
 import br.com.project.msfinancial.model.UserInfo;
+import br.com.project.msfinancial.model.response.DataInfo;
 import br.com.project.msfinancial.repository.UserRepository;
+import br.com.project.msfinancial.service.UserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import kong.unirest.HttpResponse;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
@@ -26,6 +36,9 @@ public class UserResource {
 
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+	UserService userService;
 
 	@PostMapping("/createUser")
 	public ResponseEntity<String> userCreateRequest(@RequestBody UserInfo user) {
@@ -89,5 +102,32 @@ public class UserResource {
 			log.info("User not found with cpf = '"+cpf+"'");
 			return ResponseEntity.ok("Erro");
 		}
+	}
+	
+	@GetMapping("/readBitcoinTrade")
+	public ResponseEntity<Response<String>> read() throws JsonMappingException, JsonProcessingException{
+		
+		Response<String> response = new Response<>();
+		Map<String, String> erros = new HashMap<>();
+				
+		HttpResponse<String> readInfo;
+		ObjectMapper objectMapper = new ObjectMapper();
+		try {
+			readInfo = userService.readInfo();
+			response.setData(readInfo.getBody());
+		} catch (Exception e) {
+			erros.put(e.getMessage(), e.getLocalizedMessage());
+		} finally {
+			if (!erros.isEmpty()) {
+				response.getErros().add(erros);
+				return ResponseEntity.badRequest().body(response);
+			}
+
+		}
+//		DataInfo dataInfo = objectMapper.readValue(response.getData(), DataInfo.class);
+		log.info("response: {}", response.getData());
+//		log.info("Data info: {}", dataInfo.toString());
+		
+		return ResponseEntity.ok(response);
 	}
 }

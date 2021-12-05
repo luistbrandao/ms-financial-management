@@ -43,8 +43,14 @@ public class MonthSpendInfo implements Serializable {/**
 	
 	private Month month; //mes de referencia
 
-//	@ManyToOne
-//	@JoinColumn(name = "user_id")
-//	private UserInfo user;
+	public MonthSpendInfo(List<CreditCards> creditCards, Double payCheck, List<ExtraIncome> extraIncome, Month month) {
+		super();
+		this.creditCards = creditCards;
+		this.payCheck = payCheck;
+		this.extraIncome = extraIncome;
+		this.month = month;
+	}
+
+
 	
 }

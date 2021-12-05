@@ -28,5 +28,14 @@ public class ExtraIncome implements Serializable{/**
 	
 	private String description; //descrição
 	private Double amount; //quantia
+	
+	
+	public ExtraIncome(String description, Double amount) {
+		super();
+		this.description = description;
+		this.amount = amount;
+	}
 
+	
+	
 }
