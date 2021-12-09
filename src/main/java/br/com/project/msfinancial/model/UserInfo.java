@@ -6,8 +6,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -33,21 +31,20 @@ public class UserInfo implements Serializable {
     @Id
     @Column(unique = true)
     private String cpf;
-//    private String phoneNumber;
-//    private String creditCard;
-//    private String birthday;
     private String email;
-//    private char sex;
     
-//    @OneToMany(cascade = CascadeType.ALL)
-//    private List<MonthSpendInfo> monthSpendInfos;
     
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_cpf", referencedColumnName = "cpf")
     private List<Stocks> stocks;
-    
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_cpf", referencedColumnName = "cpf")
-    private List<MonthSpendInfo> monthSpendInfos;
 
+
+	public UserInfo(List<Stocks> stocks, String cpf) {
+		super();
+		this.cpf = cpf;
+		this.stocks = stocks;
+	}
+    
+
+    
 }

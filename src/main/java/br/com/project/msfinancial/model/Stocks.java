@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import br.com.project.msfinancial.model.enums.ShareType;
 import lombok.AllArgsConstructor;
@@ -23,8 +25,8 @@ public class Stocks implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	private Long id;
 	private String ticker;
 	private Integer quantity;
 	private Double costBasis; // valor de aquisição
@@ -39,24 +41,27 @@ public class Stocks implements Serializable {
 //    FIXME analisar o sharetype ao salvar
 	private ShareType shareType; // tipo de ativo
 
+//	@ManyToOne
+//	@JoinColumn(name = "cpf")
+//	private UserInfo userInfo;
 	
 	
-	public Stocks(String ticker, Integer quantity, Double costBasis, Double avaragePrice, Double profitLoss,
-			Double upgrading, Double percentageSharesStocks, Double quote, Double targetPrice, Double toTarget,
-			Double estimateProfitGain, ShareType shareType) {
-		super();
-		this.ticker = ticker;
-		this.quantity = quantity;
-		this.costBasis = costBasis;
-		this.avaragePrice = avaragePrice;
-		this.profitLoss = profitLoss;
-		this.upgrading = upgrading;
-		this.percentageSharesStocks = percentageSharesStocks;
-		this.quote = quote;
-		this.targetPrice = targetPrice;
-		this.toTarget = toTarget;
-		this.estimateProfitGain = estimateProfitGain;
-		this.shareType = shareType;
-	}
+//	public Stocks(String ticker, Integer quantity, Double costBasis, Double avaragePrice, Double profitLoss,
+//			Double upgrading, Double percentageSharesStocks, Double quote, Double targetPrice, Double toTarget,
+//			Double estimateProfitGain, ShareType shareType) {
+//		super();
+//		this.ticker = ticker;
+//		this.quantity = quantity;
+//		this.costBasis = costBasis;
+//		this.avaragePrice = avaragePrice;
+//		this.profitLoss = profitLoss;
+//		this.upgrading = upgrading;
+//		this.percentageSharesStocks = percentageSharesStocks;
+//		this.quote = quote;
+//		this.targetPrice = targetPrice;
+//		this.toTarget = toTarget;
+//		this.estimateProfitGain = estimateProfitGain;
+//		this.shareType = shareType;
+//	}
 
 }

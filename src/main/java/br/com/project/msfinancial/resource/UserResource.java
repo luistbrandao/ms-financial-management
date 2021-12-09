@@ -5,10 +5,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,11 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.project.msfinancial.model.Response;
 import br.com.project.msfinancial.model.UserInfo;
-import br.com.project.msfinancial.model.response.DataInfo;
 import br.com.project.msfinancial.repository.UserRepository;
 import br.com.project.msfinancial.service.UserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -53,17 +54,17 @@ public class UserResource {
 		return ResponseEntity.ok(user.toString());
 	}
 
-	@PutMapping("/updateUser")
-	public ResponseEntity<String> userUpdate(@RequestBody UserInfo userInfo) {
+	@PutMapping("/updateUser/{cpf}")
+	public ResponseEntity<String> userUpdate(@PathVariable String cpf, @RequestBody UserInfo userInfo) {
 
-		Optional<UserInfo> findById = userRepository.findById(userInfo.getCpf());
+		Optional<UserInfo> findById = userRepository.findById(cpf);
 		if (!findById.isEmpty()) {
 			userInfo.setName(userInfo.getName());
 			userInfo.setEmail(userInfo.getEmail());
 			userInfo.setStocks(userInfo.getStocks());
 			UserInfo update = userRepository.save(userInfo);
 			if (update != null) {
-				log.info("Updated user name: {}", update.toString());
+				log.info("Updated user: {}", update.toString());
 				return ResponseEntity.ok(update.toString());
 			} else {
 				log.info("Error at update user");
@@ -104,6 +105,13 @@ public class UserResource {
 		}
 	}
 	
+	
+	
+	
+//	BITCOINTRADE API TEST
+	
+	
+	
 	@GetMapping("/readBitcoinTrade")
 	public ResponseEntity<Response<String>> read() throws JsonMappingException, JsonProcessingException{
 		
@@ -111,7 +119,7 @@ public class UserResource {
 		Map<String, String> erros = new HashMap<>();
 				
 		HttpResponse<String> readInfo;
-		ObjectMapper objectMapper = new ObjectMapper();
+//		ObjectMapper objectMapper = new ObjectMapper();
 		try {
 			readInfo = userService.readInfo();
 			response.setData(readInfo.getBody());

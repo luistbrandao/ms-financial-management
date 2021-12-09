@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService{
 		HttpResponse<String> response = Unirest.get("https://api.bitcointrade.com.br/v3/public/BRLBTC/ticker/")
 				.asString();
 		
-		log.info("Response JSON: {}", response.toString());
+//		log.info("Response JSON: {}", response.toString());
 		
 		
 		return response;

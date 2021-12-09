@@ -8,5 +8,5 @@ import br.com.project.msfinancial.model.UserInfo;
 @Repository
 public interface UserRepository extends JpaRepository<UserInfo, String>{
 
-	public String findByCpf(String cpf);
+	public UserInfo findByCpf(String cpf);
 }
