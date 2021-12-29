@@ -1,12 +1,14 @@
 package br.com.project.msfinancial.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
@@ -31,27 +33,13 @@ public class UserInfo implements Serializable {
     private String email;
     private String phoneNumber;
     
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "income_id", referencedColumnName = "id")
-    private MainIncome income;
-
-	public UserInfo(String name, String email, String phoneNumber, MainIncome income) {
-		super();
-		this.name = name;
-		this.email = email;
-		this.phoneNumber = phoneNumber;
-		this.income = income;
-	}
+//    @OneToOne(cascade = CascadeType.ALL)
+////    @JoinColumn(name = "user_info_id", referencedColumnName = "id")
+//    private MainIncome income;
     
-    
-    
-//    @OneToMany(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "user_cpf", referencedColumnName = "cpf")
-//    private List<Stocks> stocks;
-
-
-	
-    
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_info_id", referencedColumnName = "cpf")
+    private List<Stocks> stocks;
 
     
 }

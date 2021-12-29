@@ -54,8 +54,8 @@ public class UserResource {
 			userInfo.setName(userInfo.getName());
 			userInfo.setEmail(userInfo.getEmail());
 			userInfo.setPhoneNumber(userInfo.getPhoneNumber());
-			userInfo.setIncome(userInfo.getIncome());
-//			userInfo.setStocks(userInfo.getStocks());
+//			userInfo.setIncome(userInfo.getIncome());
+			userInfo.setStocks(userInfo.getStocks());
 			UserInfo update = userRepository.save(userInfo);
 			if (update != null) {
 				log.info("Updated user: {}", update.toString());

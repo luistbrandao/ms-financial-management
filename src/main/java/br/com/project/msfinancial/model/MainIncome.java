@@ -18,10 +18,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-public class MainIncome implements Serializable {/**
-	 * 
-	 */
+//@Entity
+public class MainIncome implements Serializable {
+	
 	private static final long serialVersionUID = 3164177178249614683L;
 	
 	@Id
